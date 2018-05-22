@@ -1,0 +1,48 @@
+<form >
+  <br>
+
+  <div class="form-group" [ngClass]="{'has-error':email.invalid && email.touched}" >
+    <label for="email">Email</label>
+    <input class="form-control" type="email" id="email" name="email" >
+  </div>
+  <p style="color:red;" *ngIf="email.invalid && email.touched">Enter correct email!</p>
+
+  <div class="form-group">
+    <label for="psw">Password</label>
+    <input class="form-control" type="password" id="psw" name="psw" >
+  </div>
+
+ 
+  
+  <div class="form-group">
+    <label for="ctr">Country</label>
+    <select name="" id="ctr" class="form-control" name="ctr" >
+      <option value="ru">Russia</option>
+      <option value="az">Azerbaijan</option>
+      <option value="tr">Turkey</option>
+      <option value="geo">Georgia</option>
+      <option value="ar">Armenia</option>
+    </select>
+  </div>
+
+  <div class="radio" *ngFor="let ans of answers ">
+    <label>
+      <input type="radio" [value]="ans.value" name="answ" > {{ans.name}}
+    </label>
+  </div>
+
+
+  <div class="form-group">
+    <button class="btn btn-success form-control" type="submit">Save</button>
+  </div>
+
+<!-- <div *ngIf="isSubmited">
+
+  <pre>
+
+    {{ formdata | json}}
+
+  </pre>
+</div> -->
+
+</form>

@@ -1,0 +1,7 @@
+<div [ngClass]="getClass()">
+  <h3>{{ _newCar.name }} </h3>
+
+  <button class="btn btn-primary" [disabled]="_newCar.isSold" (click)="actionBuy('bought')">Sell</button>
+  <button class="btn btn-primary" [disabled]="!_newCar.isSold" (click)="actionBuy('refund')">Refund</button>
+
+</div>
