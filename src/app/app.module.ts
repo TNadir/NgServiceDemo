@@ -11,6 +11,9 @@ import { CarsComponent } from './cars/cars.component';
 import { IndexComponent } from './index/index.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterReactComponent } from './register-react/register-react.component';
+import { CarApiService } from './Services/car-api.service';
+import {  HttpModule } from '@angular/http';
+import { SrcapitestComponent } from './srcapitest/srcapitest.component';
 
 
 @NgModule({
@@ -20,14 +23,19 @@ import { RegisterReactComponent } from './register-react/register-react.componen
     CarsComponent,
     IndexComponent,
     RegisterComponent,
-    RegisterReactComponent
+    RegisterReactComponent,
+    SrcapitestComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [
+
+    CarApiService
 
   
   ],

@@ -1,0 +1,7 @@
+<button class="btn btn-primary" (click)="onSubmit()">Get Cars</button>
+
+<ul class="listgroup">
+  <li class="list-group-item" *ngFor="let car of cars">
+  <span>{{car.Id}} &nbsp; {{car.name}}</span> <span>{{car.year}}</span> 
+  </li>
+</ul>

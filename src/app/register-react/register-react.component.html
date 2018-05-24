@@ -4,7 +4,12 @@
     <div class="form-group" [ngClass]="{'has-error': form.get('user.email').invalid && form.get('user.email').touched }">
       <label for="email">Email</label>
       <input class="form-control" type="email" id="email" formControlName="email">
-      <p *ngIf="form.get('user.email').invalid&&form.get('user.email').touched">Enter your email!!</p>
+      <p *ngIf="form.get('user.email').invalid&&form.get('user.email').touched">
+        
+       <span *ngIf="form.get('user.email').errors['email']" >Enter your email!!</span> 
+       <span *ngIf="form.get('user.email').errors['emailIsUsed']" >This email is unavailable!</span>
+
+      </p>
     </div>
     <div class="form-group" [ngClass]="{'has-error':form.get('user.psw').invalid && form.get('user.psw').touched }">
       <label for="psw">Password</label>
