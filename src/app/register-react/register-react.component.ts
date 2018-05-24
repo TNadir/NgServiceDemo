@@ -19,7 +19,7 @@ export class RegisterReactComponent implements OnInit {
     this.form = new FormGroup({
       user: new FormGroup({
 
-        email: new FormControl('', [Validators.required, Validators.email]),
+        email: new FormControl('', [Validators.required, Validators.email],this.checkForEmail),
         psw: new FormControl('', [Validators.required, Validators.maxLength(5)])
       }),
 
@@ -49,6 +49,33 @@ export class RegisterReactComponent implements OnInit {
     }
 
   }
+
+
+checkForEmail(control:FormControl):Promise<any>{
+
+  return new Promise((resolve,reject)=>{
+
+    setTimeout(()=>{
+
+      if(control.value==='test@gmail.com'){
+         
+        resolve({
+          'emailIsUsed':true
+
+        });
+
+      }else{
+
+        resolve(null);
+
+      }
+      
+    },3000)
+
+  });
+
+}
+
 
 
 }
