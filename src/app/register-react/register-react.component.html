@@ -1,22 +1,24 @@
-<form >
+<form [formGroup]="form" (ngSubmit)="submitForm()">
   <br>
-
-  <div class="form-group" [ngClass]="{'has-error':email.invalid && email.touched}" >
-    <label for="email">Email</label>
-    <input class="form-control" type="email" id="email" name="email" >
+  <div formGroupName="user">
+    <div class="form-group" [ngClass]="{'has-error': form.get('user.email').invalid && form.get('user.email').touched }">
+      <label for="email">Email</label>
+      <input class="form-control" type="email" id="email" formControlName="email">
+      <p *ngIf="form.get('user.email').invalid&&form.get('user.email').touched">Enter your email!!</p>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error':form.get('user.psw').invalid && form.get('user.psw').touched }">
+      <label for="psw">Password</label>
+      <input class="form-control" type="password" id="psw" formControlName="psw">
+      <p *ngIf="form.get('user.psw').invalid && form.get('user.psw').touched">Enter your password!</p>
+    </div>
   </div>
-  <p style="color:red;" *ngIf="email.invalid && email.touched">Enter correct email!</p>
 
-  <div class="form-group">
-    <label for="psw">Password</label>
-    <input class="form-control" type="password" id="psw" name="psw" >
-  </div>
 
- 
-  
+
+
   <div class="form-group">
     <label for="ctr">Country</label>
-    <select name="" id="ctr" class="form-control" name="ctr" >
+    <select name="" id="ctr" class="form-control" formControlName="ctr">
       <option value="ru">Russia</option>
       <option value="az">Azerbaijan</option>
       <option value="tr">Turkey</option>
@@ -27,22 +29,18 @@
 
   <div class="radio" *ngFor="let ans of answers ">
     <label>
-      <input type="radio" [value]="ans.value" name="answ" > {{ans.name}}
+      <input type="radio" [value]="ans.value" formControlName="answ"> {{ans.name}}
     </label>
   </div>
 
 
   <div class="form-group">
-    <button class="btn btn-success form-control" type="submit">Save</button>
+    <button class="btn btn-success form-control" [disabled]="form.invalid" type="submit">Save</button>
   </div>
 
-<!-- <div *ngIf="isSubmited">
-
-  <pre>
-
-    {{ formdata | json}}
+  <pre *ngIf="isSubmited">
+{{formData | json}}
 
   </pre>
-</div> -->
 
 </form>

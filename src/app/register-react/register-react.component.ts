@@ -11,18 +11,44 @@ export class RegisterReactComponent implements OnInit {
   constructor() { }
 
 
- form:FormGroup;
+  form: FormGroup;
+  formData: {};
+  isSubmited = false;
 
   ngOnInit() {
-    this.form=new FormGroup({
-     
-      email:new FormControl('',[Validators.required,Validators.email]),
-      psw:new FormControl('',Validators.required),
-      ctr:new FormControl('',Validators.required),
-      answ:new FormControl('',Validators.required),
+    this.form = new FormGroup({
+      user: new FormGroup({
 
+        email: new FormControl('', [Validators.required, Validators.email]),
+        psw: new FormControl('', [Validators.required, Validators.maxLength(5)])
+      }),
 
+      ctr: new FormControl('ru', Validators.required),
+      answ: new FormControl('no', Validators.required)
     });
   }
+
+  answers = [{
+    name: "Yes",
+    value: "yes"
+  }
+    ,
+  {
+    name: "No",
+    value: "no"
+  }]
+
+
+
+  submitForm() {
+
+    this.isSubmited = this.form.valid;
+
+    if (this.isSubmited) {
+      this.formData = this.form.value;
+    }
+
+  }
+
 
 }
