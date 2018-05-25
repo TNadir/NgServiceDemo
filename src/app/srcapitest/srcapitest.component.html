@@ -1,7 +1,16 @@
+<input type="text" class="form-control" [(ngModel)]="carName">
+<button class="btn btn-success" (click)="addCar()">Add</button>
+<hr>
 <button class="btn btn-primary" (click)="onSubmit()">Get Cars</button>
 
 <ul class="listgroup">
   <li class="list-group-item" *ngFor="let car of cars">
-  <span>{{car.Id}} &nbsp; {{car.name}}</span> <span>{{car.year}}</span> 
+  <span class="badge" >{{car.id}} </span> 
+  
+  {{car.year}}&nbsp;
+   {{car.name}}
+
+   <button class="btn btn-xs btn-info" (click)="updateCar(car)">Update</button>
+
   </li>
 </ul>
