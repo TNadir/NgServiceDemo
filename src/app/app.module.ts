@@ -14,6 +14,12 @@ import { RegisterReactComponent } from './register-react/register-react.componen
 import { CarApiService } from './Services/car-api.service';
 import {  HttpModule } from '@angular/http';
 import { SrcapitestComponent } from './srcapitest/srcapitest.component';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { CradetailComponent } from './cradetail/cradetail.component';
+import { ColorDirective } from './Shared/color.directive';
 
 
 @NgModule({
@@ -24,14 +30,20 @@ import { SrcapitestComponent } from './srcapitest/srcapitest.component';
     IndexComponent,
     RegisterComponent,
     RegisterReactComponent,
-    SrcapitestComponent
+    SrcapitestComponent,
+    HomeComponent,
+    HeaderComponent,
+    CradetailComponent,
+    ColorDirective
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [
 

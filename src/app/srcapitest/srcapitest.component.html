@@ -1,16 +1,27 @@
+<h3>Add Cars</h3>
+<hr>
+<a routerLink="/cars">refresh</a>
 <input type="text" class="form-control" [(ngModel)]="carName">
 <button class="btn btn-success" (click)="addCar()">Add</button>
 <hr>
 <button class="btn btn-primary" (click)="onSubmit()">Get Cars</button>
+<div class="row">
+  <div class="col-md-6">
+    <ul class="listgroup">
+      <li class="list-group-item" *ngFor="let car of cars">
+        <span class="badge">{{car.id}} </span>
 
-<ul class="listgroup">
-  <li class="list-group-item" *ngFor="let car of cars">
-  <span class="badge" >{{car.id}} </span> 
-  
-  {{car.year}}&nbsp;
-   {{car.name}}
+        <a [routerLink]="['/cars',car.id,car.name]" [queryParams]="{ year:car.year }"> {{car.year}}&nbsp; {{car.name}}</a>
 
-   <button class="btn btn-xs btn-info" (click)="updateCar(car)">Update</button>
+        <button class="btn btn-xs btn-info" (click)="updateCar(car)">Update</button>
 
-  </li>
-</ul>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="col-md-6">
+    <router-outlet></router-outlet>
+
+  </div>
+</div>
